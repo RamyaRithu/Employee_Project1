@@ -31,7 +31,7 @@
 
     <form
             action="#"
-            th:action="@{/updateEmployees}"
+            th:action="@{/updateEmployees/{id}(id=${employee.id})}"
             th:object="${employee}"
             method="POST"
     >

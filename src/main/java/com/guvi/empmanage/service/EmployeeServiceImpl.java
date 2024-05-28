@@ -36,10 +36,21 @@ public class EmployeeServiceImpl  implements EmployeeService{
         }
     }
 
-    @Override
+//    @Override
+//    public void updateEmployee(Long id, Employee updatedEmployee) {
+//        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+//
+//            Employee existingEmployee = optionalEmployee.get();
+//            existingEmployee.setFirstName(updatedEmployee.getFirstName());
+//            existingEmployee.setLastName(updatedEmployee.getLastName());
+//            existingEmployee.setEmail(updatedEmployee.getEmail());
+//            // Update other fields as needed
+//            employeeRepository.save(existingEmployee);
+//        }
+
     public void updateEmployee(Long id, Employee updatedEmployee) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
-
+        if (optionalEmployee.isPresent()) {
             Employee existingEmployee = optionalEmployee.get();
             existingEmployee.setFirstName(updatedEmployee.getFirstName());
             existingEmployee.setLastName(updatedEmployee.getLastName());
@@ -47,6 +58,8 @@ public class EmployeeServiceImpl  implements EmployeeService{
             // Update other fields as needed
             employeeRepository.save(existingEmployee);
         }
+    }
+
 
 
     @Override

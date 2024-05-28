@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+
 import java.util.List;
 
 
@@ -58,7 +60,7 @@ public class EmployeeController {
     }
 
 
-    @PutMapping ("/updateEmployees")
+    @PostMapping ("/updateEmployees/{id}")
     public String updateEmployee(@PathVariable("id") Long id, @ModelAttribute("employee") Employee updatedEmployee) {
         employeeService.updateEmployee(id, updatedEmployee);
 
@@ -66,12 +68,19 @@ public class EmployeeController {
     }
 
 
-    @DeleteMapping ("/employees/{id}")
-    public String deleteEmployee(@PathVariable Long id) {
-        employeeService.deleteEmployee(id);
+//    @DeleteMapping ("/employees/{id}")
+//    public String deleteEmployee(@PathVariable Long id) {
+//        employeeService.deleteEmployee(id);
+//
+//        return "redirect:/"; // Redirect to employee list page
+//    }
 
-        return "redirect:/"; // Redirect to employee list page
+    @GetMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable Long id, Model model) {
+        employeeService.deleteEmployee(id);
+        return "redirect:/";
     }
+
 
     @GetMapping("/viewEmployee/{id}")
     public String viewEmployee(@PathVariable Long id, Model model) {

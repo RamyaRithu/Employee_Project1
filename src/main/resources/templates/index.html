@@ -62,13 +62,16 @@
                                 <td>[[${e.lastName}]]</td>
                                 <td>[[${e.email}]]</td>
 
-                                <td><a th:href="@{'showFormForUpdate/'+${e.id}}"
+                                <td>
+                                    <a th:href="@{'showFormForUpdate/'+${e.id}}"
                                        class="btn btn-sm btn-primary">Update</a>
+                                    <!--                                    <a th:href="@{/delete/{id}(id=${employee.id})}"-->
+                                    <!--                                       class="btn btn-sm btn-danger">Delete</a>-->
+                                    <a th:href="@{/delete/{id}(id=${e.id})}" class="btn btn-sm btn-danger">Delete</a>
 
-                                    <a th:href="@{'employees/'+${e.id}}"
-                                       class="btn btn-sm btn-danger">Delete</a>
-                                <a th:href="@{'viewEmployee/'+${e.id}}"
-                                   class="btn btn-sm btn-danger">View</a></td>
+
+                                    <a th:href="@{'viewEmployee/'+${e.id}}"
+                                       class="btn btn-sm btn-danger">View</a></td>
                             </tr>
 
                             </tbody>
